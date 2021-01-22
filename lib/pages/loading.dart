@@ -13,7 +13,7 @@ class _LoadingState extends State<Loading> {
 
 
   void setupWorldTime() async {
-    WorldTime instance=WorldTime(location: 'Dhaka',flag: 'germany.png',url:'/Asia/Dhaka');
+    WorldTime instance=WorldTime(location: 'Madurai',flag: 'india.png',url:'/Asia/Kolkata');
     await instance.getTime();
     Navigator.pushReplacementNamed(context, '/home',arguments: {
       'location':instance.location,
@@ -36,7 +36,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       backgroundColor: Colors.blue[900],
       body:Center(
-        child: SpinKitFadingCircle(
+        child: SpinKitFadingGrid(
           color:Colors.white,
           size: 70.0,
         ),

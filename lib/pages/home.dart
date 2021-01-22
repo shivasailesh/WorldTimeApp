@@ -15,14 +15,20 @@ class _HomeState extends State<Home> {
     data= data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     print(data);
     String bgImage=data['isDaytime']? 'day.png' :'night.png';
+    String img=data['flag'];
     Color bgcolor =data['isDaytime'] ? Colors.blue :Colors.indigo;
     return Scaffold(
+      appBar: AppBar(
+      title: Text('World Time'),
+          centerTitle: true,
+          backgroundColor: Colors.blue[900],),
       body: SafeArea(
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/$bgImage'),
                 fit:BoxFit.cover,
+
               )
             ),
             child: Padding(
@@ -41,10 +47,12 @@ class _HomeState extends State<Home> {
                     });
                     },
                       icon: Icon(Icons.edit_location,
-                      color: Colors.orange,),
+                      color: Colors.amber,
+                      size: 25.0,),
                   label: Text('Edit Location',
                   style:TextStyle(
-                    color: Colors.orange,
+                    fontSize: 25.0,
+                    color: Colors.amber,
 
                   )),
                   ),
@@ -52,6 +60,11 @@ class _HomeState extends State<Home> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: AssetImage(
+                            'assets/$img'),
+                      ),
+                      SizedBox(width: 40.0,),
 
                       Text(
                           data['location'],
@@ -62,12 +75,12 @@ class _HomeState extends State<Home> {
                       ),)
                     ],
                   ),
-                  SizedBox(height: 20.0,),
+                  SizedBox(height: 40.0,),
                   Text(
                       data['time'],
                     style: TextStyle(
                         color: Colors.white,
-                      fontSize: 66.0),
+                      fontSize: 60.0),
 
                   ),
                 ],
